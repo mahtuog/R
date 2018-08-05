@@ -1,0 +1,21 @@
+"","disp","power_weight_ratio","KMPL"
+"Mazda RX4",2646,0.042,8.92
+"Mazda RX4 Wag",2646,0.038,8.92
+"Merc 280",2772,0.036,8.16
+"Merc 280C",2772,0.036,7.57
+"Valiant",3721,0.03,7.69
+"Hornet 4 Drive",4267,0.034,9.09
+"Merc 450SE",4561,0.044,6.97
+"Merc 450SL",4561,0.048,7.35
+"Merc 450SLC",4561,0.048,6.46
+"Maserati Bora",4978,0.094,6.38
+"AMC Javelin",5028,0.044,6.46
+"Dodge Challenger",5259,0.043,6.59
+"Camaro Z28",5788,0.064,5.65
+"Ford Pantera L",5805,0.083,6.71
+"Hornet Sportabout",5954,0.051,7.95
+"Duster 360",5954,0.069,6.08
+"Pontiac Firebird",6615,0.046,8.16
+"Chrysler Imperial",7277,0.043,6.25
+"Lincoln Continental",7607,0.04,4.42
+"Cadillac Fleetwood",7806,0.039,4.42

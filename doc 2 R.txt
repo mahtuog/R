@@ -1,0 +1,329 @@
+===========IF-ELSE operations in R and logical operators=============
+a = 2 
+b = 5 
+if(a>b) { 
+print("a>b") 
+} else 
+{ 
+print("a is not greater than b") 
+}
+
+Note: The else statement must start in the same line where the closing bracket for the if statement ends. 
+
+q)A sample program demonstrating logical OR  
+
+Problem statement: To check if a number is prime or not
+Logic : Lets take a number 5, the nearest perfect square number which is less than 4 is 5, so we need to check if 5 is divible by all integers from 2 to 4, if divibile then 5 is not a prime number 
+
+a=5
+if(a %% 2 == 0 || a %% 3 ==0 || a %% 4 ==0)
+ {
+   print("a is not a prime number") 
+  } else 
+  {
+    print("a is a prime number")
+  }
+
+
+q)A sample program to demonstrate the logical OR,AND operator along with else-if statement
+
+age = 37
+education = "PG"
+status = "married"
+if(age < 35 && education == "PG" && status == "married")
+ {
+   print("The candidate is eligible for AUS immigration" 
+ } else if(status != "single") 
+  {
+   print("The candidate is rejected since the status is single") 
+  }else if(education !="PG") 
+    {
+     print("The candidate is rejected since education is not PG")
+    }else if(age > 35)
+      {
+        print("The candidate is rejected since age is over 35")
+      }
+ 
+Note: != (! is a NOT operator, != stands for not equal to)
+
+---nested if-else statements-----
+age = 27
+education = "PG"
+status = "single" 
+
+if(age < 35) { #first level of nexting
+             if(education=="PG") { # 2nd level
+                                  if(status == "married") { # 3rd level
+                                    print("Eligible for immigration")     
+                                    }else {  
+                                     print("Not eligible for immigration")                                          } # end of 3rd level
+                                  } # end of second level 
+              } # end of first level 
+
+
+Note: One should be very careful with closing brackets while using 
+nested if-else statements, and avoid more than 2 levels of nesting 
+and try to use else-if instead of nested if-else conditions
+
+
+============================= FOR LOOPS =============================
+
+A simple looping condition to print the first 5 even numbers
+
+for(i in c(1:10)) {
+  if(i%%2==0) {
+      print(i)}
+   
+Another way of achieving the same would be .
+
+a = 1:10
+for(i in a)
+{
+  if(i%%2==0) {print(i)} 
+}      
+
+WAP0 : To print the first 30 odd numbers 
+
+
+----repeat loop and the break statement-----
+i=0
+repeat {
+  print(i)
+  if(i==10) {break}  # Break statement is used to exit the loop 
+  i=i+1
+}
+
+WAP1 : Modify the above code to make it into an infinite loop 
+
+WAP2 : Modify the above code to print the first 20 numbers divisible by 5
+Justify : How is the repeat statement better than the for loop for the previous question 
+
+----------------------------WHILE LOOPS------------------------------
+i=0;
+
+while(i<10)
+ {
+  print(i)
+  i=i+1
+ }
+
+q)In the above program, change the print(i) to cat(i) and observe the difference
+q)Now change the cat(i) with cat(i," ") and observe the difference
+q) Try the below with cat and print and you will be able to appriciate the usefullness of cat when compared to print 
+
+a=10
+print("a=",a)
+cat("a=",a)
+
+q)How to print a new line 
+cat("\n") 
+
+
+
+Note: While loops are a better choice than repeat (try to justify the reason)
+
+
+WAP3:Write a program to print the first 10 fibonacci numbers 
+0,1,1,2,3,5 .. is the fibonacci series which is formed by adding the 
+number to the previous number 
+
+
+
+
+
+
+------------------------------Nested loops-------------------------------
+q) I would like to print the following pattern 
+
+1 2 3 4 5 
+1 2 3 4 5 
+1 2 3 4 5 
+
+q)How to approach this problem ?
+First count the number of rows , its 3 
+Find the max element we are printing in each row, its 5
+What is the first element we are printing , its 1, so we initialize i=1
+rows = 3
+max = 5 
+i=1  
+a = 1 # This is an initializer to the outer loop  
+while(a<=rows)    # This loop will execute 3 times    
+ {
+   while(i < 5 )  {  # This loop will print 1 2 3 4 5
+                   cat(i," ") 
+                   i=i+1
+                   }
+  cat("\n") # This will print a new line each time 1 2 3 4 5 is printed   
+  i=1  # We need to re-initialize i=1 so that the next line is 1 2 3 4 5 
+  a=a+1
+ }
+
+
+WAP4 : Modify the above program to print 
+5 4 3 2 1
+5 4 3 2 1
+5 4 3 2 1
+5 4 3 2 1
+5 4 3 2 1
+
+
+WAP5: A program to print the below pattern 
+9 8 7  
+6 5 4  
+3 2 1
+
+
+By now the you would have a pretty good hold on loops ! 
+-------------------------------------------------------------------------
+
+====================User defined functions======================
+
+A sample program which demonstrates the use of funtions 
+#myfunc is the function name and , "a" is the argument it takes
+myfunc = function(a) { # A function to print hello 5 times 
+    i = 1 
+    while( i <= a) {
+                     print("Hello")
+                     i=i+1
+                   }
+   
+} # end of function	
+
+myfunc(5) # Calling a function, 5 is the value that gets passed to "a"
+
+
+
+WAP 11: Write a function to print the squares of the first N natural numbers, where N would be the argument the user passes to the function 
+
+
+------------Functions without arguments-----------------
+greetings = function() {
+print("Hello..good morning")
+}
+
+greetings() # Calling the function 
+
+
+----------Functions with default arguments-----------------
+myfunc = function(a=6,b=4)
+{
+s=a+b
+print(s)
+}
+
+myfunc()
+
+
+-------------------Functions returning values----------------
+mysum = function(a,b)
+{
+s = a+b
+return(s)
+}
+
+print(mysum(10,20))
+
+
+-----------------Functions returning values in a different way---------
+mysum = function(a,b)
+{
+s = a+b  # "s" will be automatically returned
+}
+
+print(mysum(10,20))
+
+
+q)Try this ..
+mysum = function(a,b)
+{
+s = a+b  
+b = 100 #Since b is the last object in this block, b will be returned 
+} 
+
+
+print(mysum(10,20))
+
+Note: Function can return only one object at a time, in case you need to return more than one object, we might have to use vectors or lists
+
+
+WAP12: Write a program where a vector with 10 numbers is passed on 
+to a user defined function, increment every number in the vector 
+and return it back to display the contents.  
+
+------Passing variable number of arguments to a function------- 
+
+neo <-function(...) {
+{
+myl = list(...)
+print(myl)
+}
+
+neo("Hello",1,2,3)
+
+
+================================================================
+
+
+
+
+===========================Strings=============================
+a = "Hello how are you"
+b = 'I am fine'
+c = " Hi I am fine ' how about you " 
+d = 'This is really " cool ' 
+
+All of the above examples are valid strings. The thumb rule is that, if a string begins with a single/double quote, it must end with the same. 
+
+-------------String concatenation using the paste function---------
+a="Hi"
+b="Good morning"
+c=paste(a,b)
+print(c) 
+
+...Now try ...
+c=paste(a,b,"#")
+The sep argument is the seperator which between the strings a,b for concatenation. 
+
+Task: Read about another argument called collapse for the paste function 
+
+WAP13: To concatenate 2 strings by passing the strings as an argument to a function and then returning it back from the function and display the result
+
+
+--------------String manipulation functions-----------------------------
+q)Counting the number of characters in a string using nchar function
+a = "Hi Hello"
+nchar(a) 
+
+Note: This will also count the space
+
+q)Try these functions 
+
+tupper(a)
+tolower(a)
+
+q)Browse through this below link to answer the question which follows the link
+
+
+Must read : Text processing in R using regular expressions 
+https://en.wikibooks.org/wiki/R_Programming/Text_Processing#Detecting_a_pattern_in_a_string_.3F
+
+WAP14 : 
+a = "Hello how are you"
+nchar will give the count of total number of character including the space. How to find out only the total count of letters ignoring the spaces ?
+
+Hint: use the unlist(strsplit("a.b.c", "\\.")) from the link 
+Note: There could be more than one ways of doing this.
+
+
+WAP15 : A program which contains a function which takes a string as an argument and returns the total number of spaces in that string 
+a="How are you"
+
+A function should accept the string as an argument and return the number of white spaces in the input string, the output in this example would be 2
+
+
+WAP16: A program to demonstate a function calling another function 
+
+=========================================================================
+
+
+

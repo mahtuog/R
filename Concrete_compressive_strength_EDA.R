@@ -1,4 +1,4 @@
-data = read.csv("concrete.csv",stringsAsFactors = FALSE)
+data = read.csv("E:/R/datasets/concrete.csv",stringsAsFactors = FALSE)
 library(psych)
 library(dplyr)
 library(tidyverse)
@@ -87,4 +87,33 @@ ggplot(olderThan28DayswithGrades,aes(x=cement,y=strength)) +
 ggplot(olderThan28DayswithGrades) + geom_bar(aes(x = grades))
 
 
+# the same mixture seems to have been tested for strengths on multiple days, 
+# we cann do a group by to check the entries having the same components
 
+
+grouped_data <- data %>% group_by(cement,slag,ash,water,superplastic,coarseagg,fineagg) %>%
+  mutate(count = n()) %>% filter(count > 1) %>% arrange(cement,age)
+
+
+grouped_data <- data %>% group_by(ash,superplastic) %>% arrange(ash,superplastic)
+
+ggplot(grouped,aes(x=as.factor(superplastic),y=strength)) +
+  geom_point(aes(col=as.factor(zero_non_zero))) 
+
+
+levels <- c(-Inf,0,Inf)
+labels <- c("Zero","Non Zero")
+
+levels1 <- c(-Inf,0,Inf)
+labels1 <- c("Zero","Non zero")
+
+grouped <- grouped_data %>% mutate(zero_non_zero_ash = cut(ash,levels,labels = labels))
+grouped_combined <- grouped %>% mutate(zero_non_zero_plastic = cut(superplastic,levels,labels=labels))
+
+
+zero_df = grouped_combined %>% filter(zero_non_zero_ash == "Zero" ,zero_non_zero_plastic == "Zero")
+non_zero_df = grouped_combined %>% filter(zero_non_zero_ash == "Non Zero" , zero_non_zero_plastic == "Non Zero")
+
+
+
+grouped %>% filter(strength >70 , ash == 0 ,superplastic == 0)
